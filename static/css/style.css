@@ -1,0 +1,112 @@
+body{
+  background-image: url(/static/images/img001.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: serif;
+}
+
+
+h1{
+  background: #3f3051;
+}
+
+
+textarea{
+  outline-color: black;
+  resize: none;
+  background-color: #0000008f;
+  border-color: #786969;
+  color: white;
+}
+
+
+.but{
+    color: #e8d5d5;
+    background-color: #00000078;
+    border-color: #000000;
+    font-family: inherit;
+}
+
+.but:hover{
+  color: #e8d5d5;
+  background-color: black;
+  border-color: #000000;
+  font-family: inherit;
+}
+
+
+label{
+  font-family: inherit;
+  font-weight: bold;
+  color: #ffffffb8;
+}
+
+
+hr{
+  border-top: groove;
+}
+
+
+#home ,#home:hover{
+  margin-left: 10px;
+  color: #e6cccc;
+  font-family: inherit;
+}
+
+
+#status {
+  position: relative;
+  margin-right: 150px;
+  color: black;
+  font-size: larger;
+  font-family: inherit;
+  background-color: #708090a8;
+}
+
+
+#div1{
+  align-items: center;
+  margin-top: 30px;
+  border-right: groove;
+}
+
+
+#div2{
+  position: relative;
+  padding-left: 80px;
+}
+
+
+#form1{
+  margin-top: 30px;
+}
+
+
+#box{
+  position: relative;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  color: white;
+  font-size: medium;
+  font-family: inherit;
+  background-color: #0000008f;
+}
+
+
+#btn_1{
+  position: absolute;
+  right: 100px;
+  top: 40px;
+}
+
+
+#btn_2{
+  position: absolute;
+  right: 100px;
+  padding-left: 11px;
+  padding-right: 11px;
+}
