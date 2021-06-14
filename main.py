@@ -72,12 +72,12 @@ def get_num():
 @app.route('/predict',methods=['post'])
 def one(lst=context):
     global num
-    if request.form.get('one'):
+    if request.form.get('one') is not None and len(lst)>30 :
         results=predict(lst,30,1)
-    elif request.form.get('custom'):
+    elif request.form.get('custom') is not None and len(lst)>30:
         results=predict(lst,30,num)
     else:
-        results=['More','context','needed!']
+        return render_template('index.html',status='More context needed!')
     results=' '.join(results).replace('<eos>','.')
     return render_template('index.html',output=results,status='Conpleted!')
 
