@@ -73,9 +73,9 @@ def get_num():
 def one(lst=context):
     global num
     if request.form.get('one'):
-        results=predict(lst,20,1)
+        results=predict(lst,30,1)
     elif request.form.get('custom'):
-        results=predict(lst,20,num)
+        results=predict(lst,30,num)
     else:
         results=['More','context','needed!']
     results=' '.join(results).replace('<eos>','.')
