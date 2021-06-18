@@ -26,7 +26,7 @@ model.load_weights('./weights.h5')
 #------------defining functions-----------------
 
 context=[]
-num=1
+default="Output will be shown here!"
 def predict(words,time_steps,num):
     for i in range(0,num):
         inp=words[-time_steps:]
@@ -42,7 +42,11 @@ def predict(words,time_steps,num):
 
 @app.route('/',methods=['GET'])
 def welcome():
-    return render_template('index.html')
+    return render_template('index.html',output=default, status="Enter text to begin.")
+
+@app.route('/help')
+def help():
+    return render_template('help.html')
 
 
 @app.route('/context',methods=['post'])
@@ -55,29 +59,20 @@ def get_context(lst=context):
     else:
         lst[:]=[]
         string='Context empty!'
-    return render_template('index.html',status=string)
-
-
-@app.route('/words',methods=['post'])
-def get_num():
-    global num
-    data=request.form.get('length')
-    if data:
-        num=int(data)
-        return render_template('index.html',status=f'Ready to generate {num} words')
-    else:
-        return render_template('index.html',status="Invalid entry")
-
+    return render_template('index.html',output=default,status=string)
 
 @app.route('/predict',methods=['post'])
 def one(lst=context):
-    global num
     if request.form.get('one') is not None and len(lst)>30 :
         results=predict(lst,30,1)
     elif request.form.get('custom') is not None and len(lst)>30:
+        num=request.form.get('length')
+        num=int(num)
+        if num is None:
+            num=1
         results=predict(lst,30,num)
     else:
-        return render_template('index.html',status='More context needed!')
+        return render_template('index.html',output=default,status='More context needed!')
     results=' '.join(results).replace('<eos>','.')
     return render_template('index.html',output=results,status='Conpleted!')
 

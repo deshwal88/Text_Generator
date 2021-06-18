@@ -4,39 +4,44 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="../static/css/style.css">
   <title>Text Generator</title>
 </head>
 
 <body>
-  <h1><a id='home' href="/">Text Generator</a></h1>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-6" id="div1">
-        <form name='form0' id="textbox" action='/context' method="post">
-          <textarea rows="10" cols="70" placeholder="Enter context as text" name="data"></textarea>
-          <button class='but' id='btn_1' name='submit' value='pressed'>Submit</button>
-          <button class='but' id='btn_2' name='reset' value='pressed'>Reset</button>
-        </form>
-        <p align="centre" id="status">{{status}}</p>
-        <div id="box">
-          {{output}}
+  <h1>Text Generator</h1>
+  <a id='help' href="/help">Help</a>
+
+  <div class='outer'>
+
+      <div class="container">
+
+          <div class="textbox">
+            <form name='form0' action='/context' method="post">
+              <textarea rows="10" cols="60" placeholder="Enter context as text" name="data"></textarea><br>
+              <button class='but' name='submit' value='pressed'>Submit</button>
+              <button class='but' name='reset' value='pressed'>Reset</button>
+            </form>
+          </div>
+
+          <div class="prediction">
+            <form name='form1' action='/predict' method="post">
+              <label>Enter the length of data to be generated:</label>
+              <br><br>
+              <input placeholder="Number" name='length'>
+              <br><br>
+              <button class='but' name='one' value='pressed'>Run for one</button>
+              <button class='but' name='custom' value='pressed'>Custom run</button>
+            </form>
+            <p id="status">{{status}}</p>
+          </div>
+
         </div>
-      </div>
-      <div class="col-6" id="div2">
-        <form name='form1' id='form1' action='/words' method="post">
-          <label for="length">Enter the length of data to be generated:</label>
-          <input placeholder="Number" name='length',id='length' >
-          <input class='but' type='submit' value='Done'>
-        </form>
-        <br>
-        <form class='btn-group' name='form2' id="form2" action="/predict" method="post">
-          <button class='but' name='one' value='pressed'>Run for one</button>
-          <button class='but' name='custom' value='pressed'>Custom run</button>
-        </form>
-      </div>
+
+        <div class="box">
+          <p>{{output}}</p>
+        </div>
+
     </div>
-  </div>
 </body>
 </html>
